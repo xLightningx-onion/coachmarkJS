@@ -125,21 +125,30 @@ function Coachmark() {
       highlighter.style.height = `${height}px`;
     }
 
-    addTooltip({
-      height,
-      text: tooltipText,
-      top: top + yScrollPosition,
-      left: left + xScrollPosition
-    });
+    // addTooltip({
+    //   height,
+    //   text: tooltipText,
+    //   top: top + yScrollPosition,
+    //   left: left + xScrollPosition
+    // });
 
-    // Add class to the element
-    element.classList.add("coachmark-highlight");
+    
 
     // Scroll element's parent container so that it is visible
     setTimeout(() => {
       // Chrome hack for scrollIntoView
       element.scrollIntoView({ behavior: "smooth", block: "center" });
-    }, 500);
+      setTimeout(() => {
+        addTooltip({
+          height,
+          text: tooltipText,
+          top: top + yScrollPosition,
+          left: left + xScrollPosition
+        });
+        // Add class to the element
+        element.classList.add("coachmark-highlight");
+      }, 200);
+    }, 100);
 
     if (currentStep === steps.length - 1) {
       nextBtn.style.display = "none";

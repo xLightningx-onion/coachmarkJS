@@ -107,7 +107,7 @@ function Coachmark() {
       // Chrome hack for scrollIntoView
       element.scrollIntoView({ behavior: "smooth", block: "center" });
     // }, 0);
-    const { top, left } = element.getBoundingClientRect();
+    const { y, top, left } = element.getBoundingClientRect();
     const height = element.offsetHeight,
       width = element.offsetWidth;
 
@@ -119,7 +119,8 @@ function Coachmark() {
      * relative to the viewport, not from the body. So it does
      * NOT account for scrollPosition.
      */
-    const yScrollPosition = window.pageYOffset;
+    console.log('y: ', y)
+    const yScrollPosition = y;
     const xScrollPosition = window.pageXOffset;
 
     if (highlighter) {

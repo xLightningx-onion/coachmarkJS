@@ -103,10 +103,10 @@ function Coachmark() {
       );
 
     // Scroll element's parent container so that it is visible
-    setTimeout(() => {
+    // setTimeout(() => {
       // Chrome hack for scrollIntoView
       element.scrollIntoView({ behavior: "smooth", block: "center" });
-    }, 0);
+    // }, 0);
     const { top, left } = element.getBoundingClientRect();
     const height = element.offsetHeight,
       width = element.offsetWidth;

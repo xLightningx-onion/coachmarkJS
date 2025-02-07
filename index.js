@@ -102,6 +102,11 @@ function Coachmark() {
         `To start using Coachmark plugin, please add data-coachmark attribute.`
       );
 
+    // Scroll element's parent container so that it is visible
+    setTimeout(() => {
+      // Chrome hack for scrollIntoView
+      element.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 0);
     const { top, left } = element.getBoundingClientRect();
     const height = element.offsetHeight,
       width = element.offsetWidth;
@@ -125,30 +130,15 @@ function Coachmark() {
       highlighter.style.height = `${height}px`;
     }
 
-    // addTooltip({
-    //   height,
-    //   text: tooltipText,
-    //   top: top + yScrollPosition,
-    //   left: left + xScrollPosition
-    // });
+    addTooltip({
+      height,
+      text: tooltipText,
+      top: top + yScrollPosition,
+      left: left + xScrollPosition
+    });
 
-    
-
-    // Scroll element's parent container so that it is visible
-    setTimeout(() => {
-      // Chrome hack for scrollIntoView
-      element.scrollIntoView({ behavior: "smooth", block: "center" });
-      setTimeout(() => {
-        addTooltip({
-          height,
-          text: tooltipText,
-          top: top + yScrollPosition,
-          left: left + xScrollPosition
-        });
-        // Add class to the element
-        element.classList.add("coachmark-highlight");
-      }, 200);
-    }, 100);
+    // Add class to the element
+    element.classList.add("coachmark-highlight");
 
     if (currentStep === steps.length - 1) {
       nextBtn.style.display = "none";

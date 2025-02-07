@@ -135,7 +135,7 @@ function Coachmark() {
         height,
         text: tooltipText,
         top: height + yScrollPosition,
-        left: width + xScrollPosition
+        left: xScrollPosition
       });
 
       // Add class to the element

@@ -138,7 +138,7 @@ function Coachmark() {
     // Scroll element's parent container so that it is visible
     setTimeout(() => {
       // Chrome hack for scrollIntoView
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
+      element.scrollIntoView({ behavior: "smooth", block: "center" });
     }, 0);
 
     if (currentStep === steps.length - 1) {
@@ -198,7 +198,7 @@ function Coachmark() {
 							<section id="js-coachmark-tooltip" class="coachmark-tooltip">
 								<header id="js-coachmark-tooltip-text">This is the intro text</header>
 								<article class="coachmark-btns">
-									<button class="coachmark-skip __btn">Skip</button>
+									<button class="coachmark-skip __btn">Close</button>
 									<button class="coachmark-next __btn">Next</button>
 								</article>
 							</section>

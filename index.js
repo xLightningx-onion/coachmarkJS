@@ -134,7 +134,7 @@ function Coachmark() {
       addTooltip({
         height,
         text: tooltipText,
-        top: yScrollPosition,
+        top: yScrollPosition + 4,
         left: xScrollPosition
       });
 

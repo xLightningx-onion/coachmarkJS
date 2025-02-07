@@ -1,6 +1,6 @@
 {
   "name": "coachmarkjs",
-  "version": "2.1.5",
+  "version": "2.1.6",
   "description": "",
   "main": "dist/bundle.cjs.js",
   "module": "dist/bundle.esm.js",

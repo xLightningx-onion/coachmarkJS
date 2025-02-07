@@ -107,46 +107,47 @@ function Coachmark() {
       // Chrome hack for scrollIntoView
       element.scrollIntoView({ behavior: "smooth", block: "center" });
     // }, 0);
-    const { y, top, left } = element.getBoundingClientRect();
-    const height = element.offsetHeight,
-      width = element.offsetWidth;
+    setTimeout(() => {
+      const { x, y, top, left } = element.getBoundingClientRect();
+      const height = element.offsetHeight,
+        width = element.offsetWidth;
 
-    const backgroundColor = getBgColor(element);
-    const tooltipText = element.dataset.coachmarkText || "";
+      const backgroundColor = getBgColor(element);
+      const tooltipText = element.dataset.coachmarkText || "";
 
-    /**
-     * getBoundingClientRect returns the element's position
-     * relative to the viewport, not from the body. So it does
-     * NOT account for scrollPosition.
-     */
-    console.log('y: ', y)
-    const yScrollPosition = y;
-    const xScrollPosition = window.pageXOffset;
+      /**
+       * getBoundingClientRect returns the element's position
+       * relative to the viewport, not from the body. So it does
+       * NOT account for scrollPosition.
+       */
+      const yScrollPosition = y;
+      const xScrollPosition = x;
 
-    if (highlighter) {
-      highlighter.style["background-color"] = backgroundColor;
-      highlighter.style.top = `${top + yScrollPosition}px`;
-      highlighter.style.left = `${left + xScrollPosition}px`;
-      highlighter.style.width = `${width}px`;
-      highlighter.style.height = `${height}px`;
-    }
+      if (highlighter) {
+        highlighter.style["background-color"] = backgroundColor;
+        highlighter.style.top = `${top + yScrollPosition}px`;
+        highlighter.style.left = `${left + xScrollPosition}px`;
+        highlighter.style.width = `${width}px`;
+        highlighter.style.height = `${height}px`;
+      }
 
-    addTooltip({
-      height,
-      text: tooltipText,
-      top: top + yScrollPosition,
-      left: left + xScrollPosition
-    });
+      addTooltip({
+        height,
+        text: tooltipText,
+        top: top + yScrollPosition,
+        left: left + xScrollPosition
+      });
 
-    // Add class to the element
-    element.classList.add("coachmark-highlight");
+      // Add class to the element
+      element.classList.add("coachmark-highlight");
 
-    if (currentStep === steps.length - 1) {
-      nextBtn.style.display = "none";
-    } else {
-      nextBtn.style.display = "inline-block";
-      nextBtn.addEventListener("click", handleNextBtnClick);
-    }
+      if (currentStep === steps.length - 1) {
+        nextBtn.style.display = "none";
+      } else {
+        nextBtn.style.display = "inline-block";
+        nextBtn.addEventListener("click", handleNextBtnClick);
+      }
+    }, 200);
   }
 
   function removeHighlight(element) {

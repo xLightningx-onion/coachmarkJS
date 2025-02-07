@@ -105,49 +105,47 @@ function Coachmark() {
     // Scroll element's parent container so that it is visible
     // setTimeout(() => {
       // Chrome hack for scrollIntoView
-      element.scrollIntoView({ behavior: "instant", block: "center" });
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
     // }, 0);
-    setTimeout(() => {
-      const { x, y, top, left } = element.getBoundingClientRect();
-      const height = element.offsetHeight,
-        width = element.offsetWidth;
+    const { x, y, top, left } = element.getBoundingClientRect();
+    const height = element.offsetHeight,
+      width = element.offsetWidth;
 
-      const backgroundColor = getBgColor(element);
-      const tooltipText = element.dataset.coachmarkText || "";
+    const backgroundColor = getBgColor(element);
+    const tooltipText = element.dataset.coachmarkText || "";
 
-      /**
-       * getBoundingClientRect returns the element's position
-       * relative to the viewport, not from the body. So it does
-       * NOT account for scrollPosition.
-       */
-      const yScrollPosition = y;
-      const xScrollPosition = x;
+    /**
+     * getBoundingClientRect returns the element's position
+     * relative to the viewport, not from the body. So it does
+     * NOT account for scrollPosition.
+     */
+    const yScrollPosition = y;
+    const xScrollPosition = x;
 
-      if (highlighter) {
-        highlighter.style["background-color"] = backgroundColor;
-        highlighter.style.top = `${height + yScrollPosition}px`;
-        highlighter.style.left = `${width + xScrollPosition}px`;
-        highlighter.style.width = `${width}px`;
-        highlighter.style.height = `${height}px`;
-      }
+    if (highlighter) {
+      highlighter.style["background-color"] = backgroundColor;
+      highlighter.style.top = `${height + yScrollPosition}px`;
+      highlighter.style.left = `${width + xScrollPosition}px`;
+      highlighter.style.width = `${width}px`;
+      highlighter.style.height = `${height}px`;
+    }
 
-      addTooltip({
-        height,
-        text: tooltipText,
-        top: yScrollPosition,
-        left: xScrollPosition
-      });
+    addTooltip({
+      height,
+      text: tooltipText,
+      top: yScrollPosition,
+      left: xScrollPosition
+    });
 
-      // Add class to the element
-      element.classList.add("coachmark-highlight");
+    // Add class to the element
+    element.classList.add("coachmark-highlight");
 
-      if (currentStep === steps.length - 1) {
-        nextBtn.style.display = "none";
-      } else {
-        nextBtn.style.display = "inline-block";
-        nextBtn.addEventListener("click", handleNextBtnClick);
-      }
-    }, 200);
+    if (currentStep === steps.length - 1) {
+      nextBtn.style.display = "none";
+    } else {
+      nextBtn.style.display = "inline-block";
+      nextBtn.addEventListener("click", handleNextBtnClick);
+    }
   }
 
   function removeHighlight(element) {

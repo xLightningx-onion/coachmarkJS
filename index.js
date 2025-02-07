@@ -147,7 +147,7 @@ function Coachmark() {
         nextBtn.style.display = "inline-block";
         nextBtn.addEventListener("click", handleNextBtnClick);
       }
-    }, 2000);
+    }, 200);
   }
 
   function removeHighlight(element) {

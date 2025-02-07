@@ -139,7 +139,7 @@ function Coachmark() {
     setTimeout(() => {
       // Chrome hack for scrollIntoView
       element.scrollIntoView({ behavior: "smooth", block: "center" });
-    }, 0);
+    }, 500);
 
     if (currentStep === steps.length - 1) {
       nextBtn.style.display = "none";

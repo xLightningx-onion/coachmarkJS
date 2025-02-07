@@ -125,8 +125,8 @@ function Coachmark() {
 
       if (highlighter) {
         highlighter.style["background-color"] = backgroundColor;
-        highlighter.style.top = `${top + yScrollPosition}px`;
-        highlighter.style.left = `${left + xScrollPosition}px`;
+        highlighter.style.top = `${height + yScrollPosition}px`;
+        highlighter.style.left = `${width + xScrollPosition}px`;
         highlighter.style.width = `${width}px`;
         highlighter.style.height = `${height}px`;
       }
